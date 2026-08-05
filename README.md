@@ -7,7 +7,7 @@
 ## ✨ 核心特性
 
 - ⚡️ **极致性能 (Zero-Copy)**：利用 Ring Buffer 与 `readinto()` 内存视图，消除 Python 解释器内昂贵的帧对象创建与销毁开销。
-- 🛡️ **工业级防撕裂**：硬核 `torch.cuda.synchronize()` 杜绝异步 DMA 与 CPU 读写的内存竞态，杜绝画面花屏与静默崩溃。
+- 🛡️ **画面防撕裂**：硬核 `torch.cuda.synchronize()` 杜绝异步 DMA 与 CPU 读写的内存竞态，杜绝画面花屏与静默崩溃。
 - 🎵 **无损音频秒合并**：采用 FFmpeg 流复制 (`-c:a copy`)，避免音频二次有损重编码。
 - 🧠 **AI 算力全下放**：将 BGR2RGB、色彩归一化、Channels-last 通道重排等前处理全部推入 CUDA 核心并行加速。
 - 📦 **完美应对高负载**：内置 memoryview 循环补齐逻辑，彻底解决 4K 巨型帧引发的 OS 管道短读 (Short Read) 截断问题。
@@ -22,7 +22,7 @@
 
 ### 2. 系统依赖 (FFmpeg)
 引擎极其依赖底层 FFmpeg 进程进行硬件编解码与多路复用。
-- 请前往 [FFmpeg 官网](https://ffmpeg.org/download.html) 下载，并解压。
+- 请前往 [FFmpeg 官网](https://ffmpeg.org/download.html) 下载，并解压。 Windows上也可使用winget命令。
 - **关键配置**：确保 `ffmpeg` 命令已加入系统的环境变量（PATH），或者在脚本配置区手动指定 `ffmpeg.exe` 的绝对路径。
 
 ### 3. Python 依赖包
